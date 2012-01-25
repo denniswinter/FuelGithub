@@ -1,0 +1,35 @@
+<?php
+$githubConf = array(
+    /**
+     * Github Client ID
+     *
+     * When registering your application on Github, you will be provided with
+     * a Client ID. This Client ID goes here.
+     */
+    'github_client_id'     => 'ENTER_CLIENT_ID_HERE',
+
+    /**
+     * Github Client Secret
+     *
+     * When registering your application on Github, you will be provided with
+     * a Client Secrer. This Client Secret goes here.
+     */
+    'github_client_secret' => 'ENTER_CLIENT_SECRET_HERE',
+
+    /**
+     * Github Callback URL
+     *
+     *
+     */
+    'github_callback_url'  => false,
+
+    'username' => 'ENTER_GITHUB_USERNAME_HERE',
+    'password' => 'ENTER_GITHUB_PASSWORD_HERE!',
+    // Patch to verify, if Basic HTTP authentication is used or OAuth2
+    'auth_conf' => 'HTTP_BASIC',
+);
+
+// NO NEED TO EDIT SOMETHING BELOW
+return array(
+    'fuelgithub' => $githubConf
+);

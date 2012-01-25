@@ -1,0 +1,34 @@
+<?php
+ini_set('display_errors', 'On');
+error_reporting(E_ALL|E_STRICT);
+
+define('FUEL_GITHUB_ONLINE_TESTS_ENABLED', false);
+
+include __DIR__ . '/../autoload_register.php';
+$configFile = __DIR__.'/../config/module.fuelgithub.config.php';
+
+set_include_path(implode(PATH_SEPARATOR, array(
+    '.',
+    get_include_path(),
+)));
+spl_autoload_register(function($class) {
+    $file = str_replace(array('\\', '_'), DIRECTORY_SEPARATOR, $class) . '.php';
+    if (false === ($realpath = stream_resolve_include_path($file))) {
+        return false;
+    }
+    include_once $realpath;
+});
+
+$modules = array(
+    'FuelGithub'
+);
+$options = array(
+    'module_paths' => array('./../')
+);
+$listenerOptions  = new \Zend\Module\Listener\ListenerOptions($options);
+$defaultListeners = new \Zend\Module\Listener\DefaultListenerAggregate($listenerOptions);
+$defaultListeners->getConfigListener()->setMergedConfig(include $configFile);
+
+$moduleManager = new \Zend\Module\Manager($modules);
+$moduleManager->events()->attachAggregate($defaultListeners);
+$moduleManager->loadModules();
