@@ -4,3 +4,4 @@ config/module.fuelgithub.config.php
 doc/api/*
 test/_assets/*
 test/log/*
+test/bootstrap.php
