@@ -197,9 +197,7 @@ class GithubProxy
             } else {
                 $class = __NAMESPACE__.'\\'.ucfirst($name);
             }
-            $this->instances[$name] = new $class();
-            // Refactor this to $this->instance[$name] = new $class($this->getHttpClient());
-            $this->instances[$name]->setHttpClient($this->getHttpClient());
+            $this->instances[$name] = new $class($this->getHttpClient());
         }
 
         return $this->instances[$name];
