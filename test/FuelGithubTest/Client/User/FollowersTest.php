@@ -41,7 +41,7 @@ class FollowersTest extends FuelTestCase
         parent::setUp();
     }
 
-    public function testFollowingTheUserApiWorks()
+    public function testFollowingTheUserFollowersApiWorks()
     {
         $userApiClient = $this->service->user->followers;
         $this->assertInstanceOf('FuelGithub\Client\User\Followers', $userApiClient);
