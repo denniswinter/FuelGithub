@@ -88,30 +88,30 @@ class GithubProxyTest extends FuelTestCase
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-    public function testResolvingToASubSubApiIsWorking()
+    public function testResolvingToASubApiPartIsWorking()
     {
         $this->assertInstanceOf('FuelGithub\Client\User\Email', $this->service->user->email);
     }
 
-    public function testResolvingOfASubApiThrowsExceptionIfInvalidApiPartIsProvided()
+    public function testResolvingOfAnApiPartThrowsExceptionIfInvalidApiPartIsProvided()
     {
         $this->setExpectedException('FuelGithub\Client\Exception\InvalidArgumentException');
         $this->service->users;
     }
 
-    public function testResolvingOfASubSubApiThrowsExceptionIfInvalidApiPartIsProvided()
+    public function testResolvingOfASubApiPartThrowsExceptionIfInvalidApiPartIsProvided()
     {
         $this->setExpectedException('FuelGithub\Client\Exception\InvalidArgumentException');
         $this->service->user->emails;
     }
 
-    public function testHttpClientEqualsInSubApi()
+    public function testHttpClientEqualsInApiPart()
     {
         $basicHttpClient = $this->service->getHttpClient();
         $this->assertEquals($basicHttpClient, $this->service->user->getHttpClient());
     }
 
-    public function testHttpClientEqualsInSubSubApi()
+    public function testHttpClientEqualsInSubApiPart()
     {
         $basicHttpClient = $this->service->getHttpClient();
         $this->assertEquals($basicHttpClient, $this->service->user->email->getHttpClient());
