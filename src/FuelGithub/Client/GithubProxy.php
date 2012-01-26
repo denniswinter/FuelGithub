@@ -1,4 +1,20 @@
 <?php
+/**
+ * FuelGithub.
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@4expressions.com so I can send you a copy immediately.
+ *
+ * @category   FuelGithub
+ * @package    FuelGithub_Client
+ * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
+ * @license    New BSD License
+ */
 
 /**
  * @namespace
@@ -9,22 +25,33 @@ use Zend\Http\Client as HttpClient,
     FuelGithub\Module as FuelGithub;
 
 /**
+ * Base proxy class.
  *
+ * @category   FuelGithub
+ * @package    FuelGithub_Client
+ * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
+ * @license    New BSD License
  */
 class GithubProxy
 {
+    /**
+     * @const string
+     */
     const GITHUB_SERVICE_PROTOCOL = 'https://';
+    /**
+     * @const string
+     */
     const GITHUB_SERVICE_URI = 'api.github.com';
 
     /**
-     *
+     * HttpClient
      *
      * @var \Zend\Http\Client|null
      */
     protected $httpClient;
 
     /**
-     *
+     * Available API parts
      *
      * @var array
      */
@@ -39,23 +66,18 @@ class GithubProxy
     );
 
     /**
-     * @var array
-     */
-    protected $subApiParts = array(
-
-    );
-
-    /**
+     * Current used API part
+     *
      * @var null|string
      */
     protected $currentApiPart;
 
     /**
+     * Array of instantiated API parts
+     *
      * @var array
      */
-    protected $instances = array(
-
-    );
+    protected $instances = array();
 
     /**
      * Returns HttpClient
@@ -84,7 +106,11 @@ class GithubProxy
     }
 
     /**
+     * Performs a request on the Github API, based on the provided parameters:
      *
+     * $url always marks the targeted URL
+     * $httpVerb may be one of "GET", "POST", "PATCH", "DELETE" & "PUT"
+     * $params is an array of additional parameters to send within the request
      *
      * @param string $url
      * @param string $httpVerb
@@ -130,12 +156,11 @@ class GithubProxy
         if (substr($url, 0, 1) != '/') {
             $url = '/'.$url;
         }
-        //\Zend\Debug::dump(self::GITHUB_SERVICE_PROTOCOL.self::GITHUB_SERVICE_URI.$url);
         return self::GITHUB_SERVICE_PROTOCOL.self::GITHUB_SERVICE_URI.$url;
     }
 
     /**
-     *
+     * Use magic method for resolving API parts
      *
      * @param  string $name
      * @return GithubProxy
@@ -151,12 +176,15 @@ class GithubProxy
         }
         if (!array_key_exists($name, $this->instances)
         || !($this->instances[$name] instanceof self)) {
+            // Slightly hacked it in
+            // Had some problems resolving additional sub API parts
             if (get_class($this) != 'FuelGithub\Client\GithubProxy') {
                 $class = get_class($this).'\\'.ucfirst($name);
             } else {
                 $class = __NAMESPACE__.'\\'.ucfirst($name);
             }
             $this->instances[$name] = new $class();
+            // Refactor this to $this->instance[$name] = new $class($this->getHttpClient());
             $this->instances[$name]->setHttpClient($this->getHttpClient());
         }
 

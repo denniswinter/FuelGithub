@@ -1,6 +1,20 @@
 <?php
 /**
+ * FuelGithub.
  *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@4expressions.com so I can send you a copy immediately.
+ *
+ * @category   FuelGithub
+ * @package    FuelGithub_Client
+ * @subpackage User
+ * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
+ * @license    New BSD License
  */
 
 /**
@@ -12,14 +26,19 @@ use FuelGithub\Client,
     Zend\Json\Json;
 
 /**
+ * Reflects Githubs User-Email API.
  *
- *
+ * @category   FuelGithub
+ * @package    FuelGithub_Client
+ * @subpackage User
+ * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
+ * @license    New BSD License
  */
 class Email extends Client\GithubProxy
 {
 
     /**
-     *
+     * Gets emails, registered by the authenticated user
      *
      * @return bool|mixed
      */
@@ -33,7 +52,7 @@ class Email extends Client\GithubProxy
     }
 
     /**
-     *
+     * Adds one or more email addresses to the users profile
      *
      * @param  string|array $emailAddresses
      * @return bool|Email
@@ -51,7 +70,7 @@ class Email extends Client\GithubProxy
     }
 
     /**
-     *
+     * Deletes one or more email addresses from authenticated users profile
      *
      * @param  string|array $emailAddresses
      * @return bool

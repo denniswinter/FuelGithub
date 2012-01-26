@@ -1,5 +1,4 @@
 <?php
-
 /**
  * FuelGithub.
  *
@@ -12,6 +11,8 @@
  * to info@4expressions.com so I can send you a copy immediately.
  *
  * @category   FuelGithub
+ * @package    FuelGithub_Client
+ * @subpackage User
  * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
  * @license    New BSD License
  */
@@ -26,7 +27,7 @@ use Zend\Json\Json,
     FuelGithub\Module as FuelGithub;
 
 /**
- * Module entry point.
+ * Reflects Githubs User API.
  *
  * @category   FuelGithub
  * @package    FuelGithub_Client

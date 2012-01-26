@@ -1,6 +1,18 @@
 <?php
 /**
+ * FuelGithub.
  *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@4expressions.com so I can send you a copy immediately.
+ *
+ * @category   FuelGithub
+ * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
+ * @license    New BSD License
  */
 
 /**
@@ -13,8 +25,11 @@ use Zend\EventManager\StaticEventManager,
     Zend\Module\Manager;
 
 /**
+ * Module entry point.
  *
- *
+ * @category   FuelGithub
+ * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
+ * @license    New BSD License
  */
 class Module implements AutoloaderProvider
 {
@@ -24,6 +39,8 @@ class Module implements AutoloaderProvider
     protected static $options = array();
 
     /**
+     * Instantiate the module
+     *
      * @param \Zend\Module\Manager $moduleManager
      */
     public function init(Manager $moduleManager)
@@ -34,7 +51,7 @@ class Module implements AutoloaderProvider
     }
 
     /**
-     * Returns the autoloading configuration
+     * Returns configuration for instantiating the autoloader
      *
      * @return array
      */
