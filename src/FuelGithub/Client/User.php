@@ -70,7 +70,7 @@ class User extends GithubProxy
             $response = $this->request('/user');
         }
         if ($response->isSuccess()) {
-            return (Json::decode($response->getContent()));
+            return (Json::decode($response->getBody()));
         }
         return false;
     }

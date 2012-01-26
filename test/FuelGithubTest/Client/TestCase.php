@@ -41,7 +41,7 @@ class TestCase extends PHPUnit
         }
 
         $client   = $this->service->getHttpClient();
-        $content  = $client->getResponse()->toString();
+        $content  = $client->getLastRawResponse();
         file_put_contents($cacheFile, $content);
     }
 
