@@ -84,4 +84,61 @@ class UserTest extends FuelTestCase
         }
         $this->assertInstanceOf('StdClass', $response);
     }
+
+    public function testUserApiGetsFollowersWithProvidedUsername()
+    {
+        if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === false) {
+            $cachedResponse = $this->getCachedResponse(
+                'user-api-gets-followers-with-provided-username',
+                array('schacon')
+            );
+            $this->service->getHttpClient()->getAdapter()->setResponse($cachedResponse);
+        }
+        $response = $this->service->user->getFollowers('schacon');
+        if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === true) {
+            $this->cacheResponse(
+                'user-api-gets-followers-with-provided-username',
+                array('schacon')
+            );
+        }
+        $this->assertInternalType('array', $response);
+    }
+
+    public function testUserApiGetFollowersOfAuthenticatedUserWhenNoUsernameIsProvided()
+    {
+        if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === false) {
+            $cachedResponse = $this->getCachedResponse(
+                'user-api-get-followers-of-authenticated-user-when-no-username-is-provided',
+                array()
+            );
+            $this->service->getHttpClient()->getAdapter()->setResponse($cachedResponse);
+        }
+        $response = $this->service->user->getFollowers();
+        if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === true) {
+            $this->cacheResponse(
+                'user-api-get-followers-of-authenticated-user-when-no-username-is-provided',
+                array()
+            );
+        }
+        $this->assertInternalType('array', $response);
+    }
+
+    public function testUserApiGetFollowersReturnsFalseIfUsernameIsNotTaken()
+    {
+        if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === false) {
+            $cachedResponse = $this->getCachedResponse(
+                'user-api-get-followers-returns-false-if-username-is-not-taken',
+                array('shacon')
+            );
+            $this->service->getHttpClient()->getAdapter()->setResponse($cachedResponse);
+        }
+        $response = $this->service->user->getFollowers('shacon');
+        if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === true) {
+            $this->cacheResponse(
+                'user-api-get-followers-returns-false-if-username-is-not-taken',
+                array('shacon')
+            );
+        }
+        $this->assertFalse($response);
+    }
 }
