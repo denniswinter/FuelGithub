@@ -116,4 +116,12 @@ class GithubProxyTest extends FuelTestCase
         $basicHttpClient = $this->service->getHttpClient();
         $this->assertEquals($basicHttpClient, $this->service->user->email->getHttpClient());
     }
+
+    public function testHttpClientMayGetInjectedToConstructor()
+    {
+        $httpClient = new \Zend\Http\Client();
+
+        $newService = new \FuelGithub\Client\GithubProxy($httpClient);
+        $this->assertEquals($httpClient, $newService->getHttpClient());
+    }
 }

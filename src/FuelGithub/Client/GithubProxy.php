@@ -80,6 +80,20 @@ class GithubProxy
     protected $instances = array();
 
     /**
+     * Constructor
+     *
+     * May get HttpClient injected.
+     *
+     * @param null|\Zend\Http\Client $httpClient
+     */
+    public function __construct(HttpClient $httpClient = null)
+    {
+        if ($httpClient !== null) {
+            $this->setHttpClient($httpClient);
+        }
+    }
+
+    /**
      * Returns HttpClient
      *
      * @return \Zend\Http\Client
