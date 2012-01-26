@@ -35,7 +35,7 @@ use Zend\Json\Json,
  * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
  * @license    New BSD License
  */
-class User extends GithubProxy
+class User extends GithubClient
 {
 
     /**

@@ -33,7 +33,7 @@ use FuelGithubTest\Client\TestCase as FuelTestCase;
  * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
  * @license    New BSD License
  */
-class GithubProxyTest extends FuelTestCase
+class GithubClientTest extends FuelTestCase
 {
     public function setUp()
     {
@@ -121,7 +121,7 @@ class GithubProxyTest extends FuelTestCase
     {
         $httpClient = new \Zend\Http\Client();
 
-        $newService = new \FuelGithub\Client\GithubProxy($httpClient);
+        $newService = new \FuelGithub\Client\GithubClient($httpClient);
         $this->assertEquals($httpClient, $newService->getHttpClient());
     }
 }

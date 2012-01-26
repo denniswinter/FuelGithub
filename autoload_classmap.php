@@ -17,7 +17,7 @@
 
 return array(
     'FuelGithub\Module'                                    => __DIR__ . '/Module.php',
-    'FuelGithub\Client\GithubProxy'                        => __DIR__ . '/src/FuelGithub/Client/GithubProxy.php',
+    'FuelGithub\Client\GithubClient'                       => __DIR__ . '/src/FuelGithub/Client/GithubClient.php',
     'FuelGithub\Client\User'                               => __DIR__ . '/src/FuelGithub/Client/User.php',
     'FuelGithub\Client\User\Email'                         => __DIR__ . '/src/FuelGithub/Client/User/Email.php',
     'FuelGithub\Client\Exception'                          => __DIR__ . '/src/FuelGithub/Client/Exception.php',

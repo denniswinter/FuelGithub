@@ -32,7 +32,7 @@ use Zend\Http\Client as HttpClient,
  * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
  * @license    New BSD License
  */
-class GithubProxy
+class GithubClient
 {
     /**
      * @const string
@@ -192,7 +192,7 @@ class GithubProxy
         || !($this->instances[$name] instanceof self)) {
             // Slightly hacked it in
             // Had some problems resolving additional sub API parts
-            if (get_class($this) != 'FuelGithub\Client\GithubProxy') {
+            if (get_class($this) != 'FuelGithub\Client\GithubClient') {
                 $class = get_class($this).'\\'.ucfirst($name);
             } else {
                 $class = __NAMESPACE__.'\\'.ucfirst($name);

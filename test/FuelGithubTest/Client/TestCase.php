@@ -23,7 +23,7 @@
 namespace FuelGithubTest\Client;
 
 use \PHPUnit_Framework_TestCase as PHPUnit,
-    FuelGithub\Client\GithubProxy,
+    FuelGithub\Client\GithubClient,
     Zend\Http\Client;
 
 /**
@@ -47,7 +47,7 @@ class TestCase extends PHPUnit
     {
         parent::setUp();
 
-        $this->service = new GithubProxy();
+        $this->service = new GithubClient();
 
         if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === false) {
             $mockAdapter   = new Client\Adapter\Test();

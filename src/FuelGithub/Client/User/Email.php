@@ -34,7 +34,7 @@ use FuelGithub\Client,
  * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
  * @license    New BSD License
  */
-class Email extends Client\GithubProxy
+class Email extends Client\GithubClient
 {
 
     /**
