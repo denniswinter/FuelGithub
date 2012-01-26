@@ -202,4 +202,20 @@ class GithubClient
 
         return $this->instances[$name];
     }
+
+    /**
+     * Checks if credentials are provided
+     *
+     * @TODO Need to refactor this, when updating to OAUTH2
+     *
+     * @throws Exception\BadCredentialsException
+     */
+    protected function checkForCredentials()
+    {
+        if (!FuelGithub::getOption('username') || !FuelGithub::getOption('password')) {
+            $message  = "No credentials are provided. Please make sure to
+                provide authentication credentials or use the public API correctly";
+            throw new Exception\BadCredentialsException($message);
+        }
+    }
 }

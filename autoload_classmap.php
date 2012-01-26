@@ -23,4 +23,5 @@ return array(
     'FuelGithub\Client\Exception'                          => __DIR__ . '/src/FuelGithub/Client/Exception.php',
     'FuelGithub\Client\Exception\InvalidArgumentException' => __DIR__ . '/src/FuelGithub/Client/Exception/InvalidArgumentException.php',
     'FuelGithub\Client\Exception\RuntimeException'         => __DIR__ . '/src/FuelGithub/Client/Exception/RuntimeException.php',
+    'FuelGithub\Client\Exception\BadCredentialException'   => __DIR__ . '/src/FuelGithub/Client/Exception/BadCredentialException.php',
 );

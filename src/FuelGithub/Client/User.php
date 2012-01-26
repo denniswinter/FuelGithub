@@ -46,6 +46,7 @@ class User extends GithubClient
     protected $apiParts = array(
         'email',
         'keys',
+        'followers',
     );
 
     /**
@@ -56,18 +57,14 @@ class User extends GithubClient
      *
      * @param  null|string $username
      * @return bool|mixed
-     * @throws FuelGithub\Client\Exception\RuntimeException
+     * @throws FuelGithub\Client\Exception\BadCredentialException if no credentials are provided
      */
     public function get($username = null)
     {
         if ($username !== null) {
             $response = $this->request('/users/' . $username);
         } else {
-            if (!FuelGithub::getOption('username') || !FuelGithub::getOption('password')) {
-                $message  = "No credentials are provided. Please make sure to
-                    provide authentication credentials or use the public API correctly";
-                throw new Exception\RuntimeException($message);
-            }
+            $this->checkForCredentials();
             $response = $this->request('/user');
         }
         if ($response->isSuccess()) {
