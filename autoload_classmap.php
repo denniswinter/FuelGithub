@@ -20,6 +20,7 @@ return array(
     'FuelGithub\Client\GithubClient'                       => __DIR__ . '/src/FuelGithub/Client/GithubClient.php',
     'FuelGithub\Client\User'                               => __DIR__ . '/src/FuelGithub/Client/User.php',
     'FuelGithub\Client\User\Email'                         => __DIR__ . '/src/FuelGithub/Client/User/Email.php',
+    'FuelGithub\Client\User\Followers'                     => __DIR__ . '/src/FuelGithub/Client/User/Followers.php',
     'FuelGithub\Client\Exception'                          => __DIR__ . '/src/FuelGithub/Client/Exception.php',
     'FuelGithub\Client\Exception\InvalidArgumentException' => __DIR__ . '/src/FuelGithub/Client/Exception/InvalidArgumentException.php',
     'FuelGithub\Client\Exception\RuntimeException'         => __DIR__ . '/src/FuelGithub/Client/Exception/RuntimeException.php',
