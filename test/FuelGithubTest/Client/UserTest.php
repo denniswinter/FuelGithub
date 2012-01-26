@@ -85,6 +85,25 @@ class UserTest extends FuelTestCase
         $this->assertInstanceOf('StdClass', $response);
     }
 
+    public function testUserApiGetUserReturnsFalseIfUsernameIsNotTaken()
+    {
+        if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === false) {
+            $cachedResponse = $this->getCachedResponse(
+                'user-api-get-user-returns-false-if-username-is-not-taken',
+                array('shacon')
+            );
+            $this->service->getHttpClient()->getAdapter()->setResponse($cachedResponse);
+        }
+        $response = $this->service->user->get('shacon');
+        if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === true) {
+            $this->cacheResponse(
+                'user-api-get-user-returns-false-if-username-is-not-taken',
+                array('shacon')
+            );
+        }
+        $this->assertFalse($response);
+    }
+
     public function testUserApiGetsFollowersWithProvidedUsername()
     {
         if (FUEL_GITHUB_ONLINE_TESTS_ENABLED === false) {
