@@ -26,7 +26,7 @@ use FuelGithub\Client,
     Zend\Json\Json;
 
 /**
- * Reflects Githubs User-Email API.
+ * Reflects Githubs User-Emails API.
  *
  * @category   FuelGithub
  * @package    FuelGithub_Client
@@ -34,7 +34,7 @@ use FuelGithub\Client,
  * @copyright  Copyright (c) 2012 Dennis Winter <info@4expressions.com>
  * @license    New BSD License
  */
-class Email extends Client\GithubClient
+class Emails extends Client\GithubClient
 {
 
     /**

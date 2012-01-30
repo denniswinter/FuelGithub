@@ -44,7 +44,7 @@ class User extends GithubClient
      * @var array
      */
     protected $apiParts = array(
-        'email',
+        'emails',
         'keys',
         'followers',
     );

@@ -90,7 +90,7 @@ class GithubClientTest extends FuelTestCase
 
     public function testResolvingToASubApiPartIsWorking()
     {
-        $this->assertInstanceOf('FuelGithub\Client\User\Email', $this->service->user->email);
+        $this->assertInstanceOf('FuelGithub\Client\User\Emails', $this->service->user->emails);
     }
 
     public function testResolvingOfAnApiPartThrowsExceptionIfInvalidApiPartIsProvided()
@@ -102,7 +102,7 @@ class GithubClientTest extends FuelTestCase
     public function testResolvingOfASubApiPartThrowsExceptionIfInvalidApiPartIsProvided()
     {
         $this->setExpectedException('FuelGithub\Client\Exception\InvalidArgumentException');
-        $this->service->user->emails;
+        $this->service->user->email;
     }
 
     public function testHttpClientEqualsInApiPart()
@@ -114,7 +114,7 @@ class GithubClientTest extends FuelTestCase
     public function testHttpClientEqualsInSubApiPart()
     {
         $basicHttpClient = $this->service->getHttpClient();
-        $this->assertEquals($basicHttpClient, $this->service->user->email->getHttpClient());
+        $this->assertEquals($basicHttpClient, $this->service->user->emails->getHttpClient());
     }
 
     public function testHttpClientMayGetInjectedToConstructor()
